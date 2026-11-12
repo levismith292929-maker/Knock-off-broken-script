@@ -25,7 +25,7 @@ Put MP3 files in `normal` for regular mode. Put stream-safe / recording-safe MP3
 The MP3 decoder is MP3SPI 1.9.5.4, distributed under LGPL 2.1. See <https://central.sonatype.com/artifact/com.googlecode.soundlibs/mp3spi/1.9.5.4> for its artifact and license information.
 
 ## Build
-Requires JDK 21 and Gradle 9.2.1 or compatible. Run `gradle build`. JARs are written to `build/libs/`.
+Requires JDK 21 and Gradle 9.5.0 or compatible. Run `gradle build`. JARs are written to `build/libs/`.
 
 ## GitHub Actions
 The workflow builds regular and source JARs on pushes and pull requests. Push a tag such as `v1.0.0` to attach both JARs to a GitHub Release.

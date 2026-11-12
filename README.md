@@ -3,11 +3,13 @@
 A client-side Fabric horror/prank mod for Minecraft Java 1.21.11.
 
 ## Consent and effects
-- Shows a startup consent screen every launch. The buttons appear after a 30-second reading period; there is no countdown or helper text.
+- Shows a startup consent screen every launch. The buttons appear after a 30-second reading period.
 - Nothing is written to disk until you accept. Choosing **I do NOT agree** exits Minecraft.
 - After consent, occasional Windows message boxes and harmless text notes may appear. Notes are created in `Desktop/MinecraftPranks`; existing files are never overwritten or deleted.
-- Random creepy Minecraft sound effects play occasionally. The current sound is the vanilla Warden heartbeat event (`minecraft:entity.warden.heartbeat`), played locally at the player's position.
-- This mod does not include Deltarune music, other external music, MP3 playback, or user-supplied music folders.
+- Random **custom local MP3 sound effects** play occasionally. The mod does not use vanilla Minecraft sounds and does not bundle external audio.
+- Place your own MP3s in `.minecraft/config/knock-off-broken-script/audio/`. Supported filename prefixes are `Jarona`, `Here I Come San Francisco`, and `WIJMSOAIJOMC`. The mod picks randomly from files it finds there. If the folder is empty, it simply plays nothing.
+- The 18+ track is disabled by default; press its setting 10 times to enable it, then once to disable it. It is always blocked in YT/Twitch Mode.
+- YT/Twitch Mode is a saved preference for stream-safe use. Add only audio you have permission to use in recordings or streams.
 - No startup persistence, background service, remote access, shell execution, or hidden installation.
 
 ## Build

@@ -1,9 +1,11 @@
 package dev.unpredictable;
+
 import net.minecraft.client.Minecraft;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
+
 /** Random local-only events; runs only after consent and while in a world. */
 public final class HorrorScheduler {
     private static long nextSound, nextPopup, nextFile, lastPopup;
@@ -16,7 +18,7 @@ public final class HorrorScheduler {
         if (!ConsentState.isAccepted() || client.player == null || client.level == null) return;
         long now = System.currentTimeMillis();
         if (!initialized) { nextSound=now+random(45_000,120_000); nextPopup=now+random(150_000,300_000); nextFile=now+random(360_000,720_000); initialized=true; }
-        if (now>=nextSound) { ScaryAudio.playRandom(); nextSound=now+random(75_000,210_000); }
+        if (now>=nextSound) { ScarySounds.playRandom(client); nextSound=now+random(75_000,210_000); }
         if (now>=nextPopup && now-lastPopup>=240_000) {
             int i=ThreadLocalRandom.current().nextInt(MESSAGES.length);
             WindowsPopups.show(TITLES[ThreadLocalRandom.current().nextInt(TITLES.length)], MESSAGES[i]);

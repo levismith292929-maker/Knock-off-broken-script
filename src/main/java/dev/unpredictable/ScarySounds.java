@@ -49,9 +49,10 @@ public final class ScarySounds {
     }
 
     private static List<Path> findSoundFiles() {
+        Path selectedFolder = AudioSettings.isYtTwitchMode() ? AUDIO_DIR.resolve("yt-twitch") : AUDIO_DIR;
         try {
-            Files.createDirectories(AUDIO_DIR);
-            try (var files = Files.list(AUDIO_DIR)) {
+            Files.createDirectories(selectedFolder);
+            try (var files = Files.list(selectedFolder)) {
                 return files.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".mp3"))
                     .filter(path -> {

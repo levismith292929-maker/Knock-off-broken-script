@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "unpredictable",
+  "version": "${version}",
+  "name": "Knock off broken script",
+  "description": "A consent-based local horror prank mod with harmless desktop effects.",
+  "environment": "client",
+  "entrypoints": { "client": ["dev.unpredictable.UnpredictableClient"] },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

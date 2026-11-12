@@ -11,8 +11,6 @@ public final class ConsentScreen extends Screen {
     private static final int BG = 0xF0181818, WHITE = 0xFFFFFFFF;
     private final long openedAt = System.currentTimeMillis();
     private boolean buttonsAdded;
-    private int adultPresses;
-    private Button adultButton;
 
     public ConsentScreen() { super(Component.literal("Knock off broken script - Permission")); }
     @Override protected void init() {}
@@ -23,42 +21,13 @@ public final class ConsentScreen extends Screen {
             buttonsAdded = true;
             int w = Math.min(440, this.width - 32);
             int left = (this.width - w) / 2;
-            int y = Math.max(12, this.height / 2 - 4);
-            addRenderableWidget(Button.builder(ytLabel(), b -> {
-                SettingsStore.toggleYtTwitchMode();
-                b.setMessage(ytLabel());
-            }).bounds(left, y, w, 22).build());
-            adultButton = addRenderableWidget(Button.builder(adultLabel(), b -> pressAdultToggle())
-                .bounds(left, y + 27, w, 22).build());
+            int y = Math.max(12, this.height / 2 + 4);
             addRenderableWidget(Button.builder(Component.literal("I agree to let this mod add/alter files on my device"),
                 b -> { ConsentState.accept(); Minecraft.getInstance().setScreen(null); })
-                .bounds(left, y + 58, w, 24).build());
+                .bounds(left, y, w, 24).build());
             addRenderableWidget(Button.builder(Component.literal("I do NOT agree"),
-                b -> Minecraft.getInstance().stop()).bounds(left, y + 88, w, 24).build());
+                b -> Minecraft.getInstance().stop()).bounds(left, y + 34, w, 24).build());
         }
-    }
-
-    private void pressAdultToggle() {
-        if (SettingsStore.isAdultAudioEnabled()) {
-            SettingsStore.disableAdultAudio();
-            adultPresses = 0;
-        } else {
-            adultPresses++;
-            if (adultPresses >= 10) {
-                SettingsStore.enableAdultAudio();
-                adultPresses = 0;
-            }
-        }
-        adultButton.setMessage(adultLabel());
-    }
-
-    private static Component ytLabel() {
-        return Component.literal("YT/Twitch Mode: " + (SettingsStore.isYtTwitchMode() ? "ON" : "OFF"));
-    }
-
-    private Component adultLabel() {
-        if (SettingsStore.isAdultAudioEnabled()) return Component.literal("18+ Audio: ON (press once to turn OFF)");
-        return Component.literal("18+ Audio: OFF (" + adultPresses + "/10 presses to enable)");
     }
 
     @Override public void render(GuiGraphics g, int mx, int my, float pt) {

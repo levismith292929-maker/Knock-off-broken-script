@@ -33,9 +33,7 @@ public final class ScaryAudio {
                     .filter(path -> {
                         String normalized = path.getFileName().toString().toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]", "");
                         boolean adultTrack = normalized.contains(ADULT_TRACK_MARKER);
-                        return !adultTrack && SettingsStore.isYtTwitchMode()
-                            ? true
-                            : !adultTrack || SettingsStore.isAdultAudioEnabled();
+                        return !adultTrack || (!SettingsStore.isYtTwitchMode() && SettingsStore.isAdultAudioEnabled());
                     })
                     .forEach(tracks::add);
             }

@@ -11,7 +11,7 @@ A client-side Fabric horror/prank mod for Minecraft Java 1.21.11.
 
 ## Startup settings
 - **YT/Twitch Mode** selects the separate `yt-twitch` audio folder. Put only music you have permission to use in streams/recordings there. It does not use the normal folder.
-- **18+ Audio** is OFF by default. It takes 10 presses to enable and one press to disable. The track named `WIJMSOAIJOMCAIHAHCSOMDTAGIUAJOTB` is excluded unless this setting is enabled.
+- **18+ Audio** is OFF by default. It takes 10 presses to enable and one press to disable. The track named `WIJMSOAIJOMCAIHAHCSOMDTAGIUAJOTB` is excluded unless this setting is enabled, and is always blocked in YT/Twitch Mode.
 - Settings are saved in `.minecraft/config/knock-off-broken-script/settings.properties` after you accept.
 
 ## Add your audio

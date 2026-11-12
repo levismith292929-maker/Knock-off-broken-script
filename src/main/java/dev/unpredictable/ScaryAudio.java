@@ -30,8 +30,13 @@ public final class ScaryAudio {
             try (var files = Files.list(directory)) {
                 files.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".mp3"))
-                    .filter(path -> SettingsStore.isAdultAudioEnabled()
-                        || !path.getFileName().toString().toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]", "").contains(ADULT_TRACK_MARKER))
+                    .filter(path -> {
+                        String normalized = path.getFileName().toString().toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]", "");
+                        boolean adultTrack = normalized.contains(ADULT_TRACK_MARKER);
+                        return !adultTrack && SettingsStore.isYtTwitchMode()
+                            ? true
+                            : !adultTrack || SettingsStore.isAdultAudioEnabled();
+                    })
                     .forEach(tracks::add);
             }
         } catch (Exception ignored) { return; }
